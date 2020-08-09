@@ -1,0 +1,26 @@
+version: '2.1'
+volumes:
+    data: {}
+services:
+    aai:
+        build:
+            context: aai
+            dockerfile: Dockerfile.template
+        environment:
+            - UDEV=1
+        privileged: true
+        network_mode: host
+        depends_on:
+            - "noisy"
+        volumes:
+            - "data:/app/data"
+        devices:
+            - "/dev:/dev"
+    noisy:
+        build:
+            context: noisy
+            dockerfile: Dockerfile.template
+        privileged: true
+        network_mode: host
+        volumes:
+            - "data:/app/data"
