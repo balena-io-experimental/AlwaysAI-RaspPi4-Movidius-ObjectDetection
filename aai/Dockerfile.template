@@ -1,4 +1,4 @@
-FROM alwaysai/edgeiq:arm64-latest
+FROM alwaysai/edgeiq:aarch64-0.17.1
 WORKDIR /usr/src
 
 RUN apt update && apt install usbutils nano
